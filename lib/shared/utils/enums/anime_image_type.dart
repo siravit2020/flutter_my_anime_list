@@ -1,0 +1,4 @@
+enum AnimeImageType {
+  jpg,
+  webp,
+}

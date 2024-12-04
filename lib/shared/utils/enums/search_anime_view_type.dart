@@ -1,0 +1,4 @@
+enum SearchAnimeViewType {
+  list,
+  grid,
+}

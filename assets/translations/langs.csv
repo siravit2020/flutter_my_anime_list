@@ -1,0 +1,16 @@
+key,en,th
+hello,Hello,สวัสดี
+response.success,Success,สำเร็จ
+response.badRequest,Bad Request,คำร้องขอไม่ถูกต้อง
+response.unauthorized,Unauthorized,ไม่อนุญาต
+response.forbidden,Forbidden,ห้าม
+response.notFound,Not Found,ไม่พบ
+response.internalServerError,Internal Server Error,เกิดข้อผิดพลาดบางอย่าง
+response.noContent,No Content,ไม่มีเนื้อหา
+response.connectTimeout,Connect Timeout,เชื่อมต่อหมดเวลา
+response.cancel,Cancel,ยกเลิก
+response.receiveTimeout,Receive Timeout,หมดเวลาการรับข้อมูล
+response.sendTimeout,Send Timeout,หมดเวลาการส่งข้อมูล
+response.cacheError,Cache Error,ข้อผิดพลาดของแคช
+response.noInternetConnection,No Internet Connection,ไม่มีการเชื่อมต่ออินเทอร์เน็ต
+response.default,Unknown error occurred,เกิดข้อผิดพลาดที่ไม่รู้จัก
