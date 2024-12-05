@@ -21,6 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) : super(const HomeInitial()) {
     on<HomeFetch>(_onHomeFetched);
   }
+
   final FetchTopAnimeUsecase fetchTopAnimeUsecase;
   final FetchSeasonNowUsecase fetchSeasonNowUsecase;
 

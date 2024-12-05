@@ -18,22 +18,24 @@ class SearchAnimeBloc extends Bloc<SearchAnimeEvent, SearchAnimeState> {
             params: SearchAnimeParams(
               query: '',
               page: 1,
+              limit: pageSize,
             ),
             viewType: SearchAnimeViewType.list,
           ),
         ) {
     on<SearchAnimeSearch>(_searchAnime);
+    on<SearchAnimeLoadMore>(_loadMore);
     on<SearchAnimeQueryChanged>(_queryChanged);
-    on<SearchAnimeMaximumChanged>(_maximumChanged);
     on<SearchAnimeScoreChanged>(_scoreChanged);
     on<SearchAnimeGenreChanged>(_genreChanged);
     on<SearchAnimeViewTypeChanged>(_viewTypeChanged);
   }
+  static const pageSize = 20;
 
   final SearchAnimeUsecase searchAnimeUsecase;
 
   FutureOr<void> _searchAnime(
-    SearchAnimeEvent event,
+    SearchAnimeSearch event,
     Emitter<SearchAnimeState> emitter,
   ) async {
     await state.maybeMap(
@@ -55,7 +57,32 @@ class SearchAnimeBloc extends Bloc<SearchAnimeEvent, SearchAnimeState> {
           ),
         );
         await _searchAnimeWithParams(
-          parms: value.params,
+          parms: value.params.copyWith(
+            page: 1,
+          ),
+          emitter: emitter,
+        );
+      },
+      orElse: () {
+        emitter(
+          const SearchAnimeState.failed(
+            AppException(message: 'Failed to search anime'),
+          ),
+        );
+      },
+    );
+  }
+
+  FutureOr<void> _loadMore(
+    SearchAnimeLoadMore event,
+    Emitter<SearchAnimeState> emitter,
+  ) async {
+    await state.maybeMap(
+      succeed: (value) async {
+        await _searchAnimeWithParams(
+          parms: value.params.copyWith(
+            page: event.page,
+          ),
           emitter: emitter,
         );
       },
@@ -74,7 +101,7 @@ class SearchAnimeBloc extends Bloc<SearchAnimeEvent, SearchAnimeState> {
     Emitter<SearchAnimeState> emitter,
   ) {
     state.maybeMap(
-      succeed: (value) {
+      initial: (value) {
         emitter(
           value.copyWith(
             params: value.params.copyWith(
@@ -83,20 +110,11 @@ class SearchAnimeBloc extends Bloc<SearchAnimeEvent, SearchAnimeState> {
           ),
         );
       },
-      orElse: () {},
-    );
-  }
-
-  FutureOr<void> _maximumChanged(
-    SearchAnimeMaximumChanged event,
-    Emitter<SearchAnimeState> emitter,
-  ) {
-    state.maybeMap(
       succeed: (value) {
         emitter(
           value.copyWith(
             params: value.params.copyWith(
-              limit: event.maximum,
+              query: event.query,
             ),
           ),
         );

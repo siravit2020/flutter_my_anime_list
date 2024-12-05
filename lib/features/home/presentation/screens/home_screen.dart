@@ -44,21 +44,26 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           actions: [
             BlocBuilder<AppThemeCubit, AppTheme>(
               builder: (context, state) {
-                return Switch(
-                  value: state.brightness == Brightness.dark,
-                  thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
-                    (Set<WidgetState> states) {
-                      if (states.contains(WidgetState.selected)) {
-                        return const Icon(Icons.dark_mode_rounded);
-                      }
-                      return const Icon(
-                        Icons.light_mode_rounded,
-                      ); // All other states will use the default thumbIcon.
+                return Padding(
+                  padding: const EdgeInsets.only(
+                    right: AppSize.s08,
+                  ),
+                  child: Switch(
+                    value: state.brightness == Brightness.dark,
+                    thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
+                      (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.selected)) {
+                          return const Icon(Icons.dark_mode_rounded);
+                        }
+                        return const Icon(
+                          Icons.light_mode_rounded,
+                        ); // All other states will use the default thumbIcon.
+                      },
+                    ),
+                    onChanged: (value) {
+                      context.read<AppThemeCubit>().changeTheme();
                     },
                   ),
-                  onChanged: (value) {
-                    context.read<AppThemeCubit>().changeTheme();
-                  },
                 );
               },
             ),

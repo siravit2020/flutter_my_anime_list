@@ -19,8 +19,8 @@ mixin _$SearchAnimeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function(int? page) loadMore,
     required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
     required TResult Function(double score) scoreChanged,
     required TResult Function(List<int> genre) genreChanged,
     required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
@@ -29,8 +29,8 @@ mixin _$SearchAnimeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
     TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
     TResult? Function(double score)? scoreChanged,
     TResult? Function(List<int> genre)? genreChanged,
     TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -39,8 +39,8 @@ mixin _$SearchAnimeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function(int? page)? loadMore,
     TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
     TResult Function(double score)? scoreChanged,
     TResult Function(List<int> genre)? genreChanged,
     TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -50,8 +50,8 @@ mixin _$SearchAnimeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
     required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
     required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
     required TResult Function(SearchAnimeGenreChanged value) genreChanged,
     required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
@@ -60,8 +60,8 @@ mixin _$SearchAnimeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
     TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -70,8 +70,8 @@ mixin _$SearchAnimeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
     TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -137,8 +137,8 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function(int? page) loadMore,
     required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
     required TResult Function(double score) scoreChanged,
     required TResult Function(List<int> genre) genreChanged,
     required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
@@ -150,8 +150,8 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
     TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
     TResult? Function(double score)? scoreChanged,
     TResult? Function(List<int> genre)? genreChanged,
     TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -163,8 +163,8 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function(int? page)? loadMore,
     TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
     TResult Function(double score)? scoreChanged,
     TResult Function(List<int> genre)? genreChanged,
     TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -180,8 +180,8 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
     required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
     required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
     required TResult Function(SearchAnimeGenreChanged value) genreChanged,
     required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
@@ -193,8 +193,8 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
     TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -206,8 +206,8 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
     TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -222,6 +222,165 @@ class _$SearchAnimeSearchImpl implements SearchAnimeSearch {
 
 abstract class SearchAnimeSearch implements SearchAnimeEvent {
   const factory SearchAnimeSearch() = _$SearchAnimeSearchImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchAnimeLoadMoreImplCopyWith<$Res> {
+  factory _$$SearchAnimeLoadMoreImplCopyWith(_$SearchAnimeLoadMoreImpl value,
+          $Res Function(_$SearchAnimeLoadMoreImpl) then) =
+      __$$SearchAnimeLoadMoreImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? page});
+}
+
+/// @nodoc
+class __$$SearchAnimeLoadMoreImplCopyWithImpl<$Res>
+    extends _$SearchAnimeEventCopyWithImpl<$Res, _$SearchAnimeLoadMoreImpl>
+    implements _$$SearchAnimeLoadMoreImplCopyWith<$Res> {
+  __$$SearchAnimeLoadMoreImplCopyWithImpl(_$SearchAnimeLoadMoreImpl _value,
+      $Res Function(_$SearchAnimeLoadMoreImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = freezed,
+  }) {
+    return _then(_$SearchAnimeLoadMoreImpl(
+      page: freezed == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchAnimeLoadMoreImpl implements SearchAnimeLoadMore {
+  const _$SearchAnimeLoadMoreImpl({this.page});
+
+  @override
+  final int? page;
+
+  @override
+  String toString() {
+    return 'SearchAnimeEvent.loadMore(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchAnimeLoadMoreImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchAnimeLoadMoreImplCopyWith<_$SearchAnimeLoadMoreImpl> get copyWith =>
+      __$$SearchAnimeLoadMoreImplCopyWithImpl<_$SearchAnimeLoadMoreImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() search,
+    required TResult Function(int? page) loadMore,
+    required TResult Function(String query) queryChanged,
+    required TResult Function(double score) scoreChanged,
+    required TResult Function(List<int> genre) genreChanged,
+    required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
+  }) {
+    return loadMore(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
+    TResult? Function(String query)? queryChanged,
+    TResult? Function(double score)? scoreChanged,
+    TResult? Function(List<int> genre)? genreChanged,
+    TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
+  }) {
+    return loadMore?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? search,
+    TResult Function(int? page)? loadMore,
+    TResult Function(String query)? queryChanged,
+    TResult Function(double score)? scoreChanged,
+    TResult Function(List<int> genre)? genreChanged,
+    TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (loadMore != null) {
+      return loadMore(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
+    required TResult Function(SearchAnimeQueryChanged value) queryChanged,
+    required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
+    required TResult Function(SearchAnimeGenreChanged value) genreChanged,
+    required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
+  }) {
+    return loadMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
+    TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
+    TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
+    TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
+    TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
+  }) {
+    return loadMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
+    TResult Function(SearchAnimeQueryChanged value)? queryChanged,
+    TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
+    TResult Function(SearchAnimeGenreChanged value)? genreChanged,
+    TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (loadMore != null) {
+      return loadMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchAnimeLoadMore implements SearchAnimeEvent {
+  const factory SearchAnimeLoadMore({final int? page}) =
+      _$SearchAnimeLoadMoreImpl;
+
+  int? get page;
+  @JsonKey(ignore: true)
+  _$$SearchAnimeLoadMoreImplCopyWith<_$SearchAnimeLoadMoreImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -292,8 +451,8 @@ class _$SearchAnimeQueryChangedImpl implements SearchAnimeQueryChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function(int? page) loadMore,
     required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
     required TResult Function(double score) scoreChanged,
     required TResult Function(List<int> genre) genreChanged,
     required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
@@ -305,8 +464,8 @@ class _$SearchAnimeQueryChangedImpl implements SearchAnimeQueryChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
     TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
     TResult? Function(double score)? scoreChanged,
     TResult? Function(List<int> genre)? genreChanged,
     TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -318,8 +477,8 @@ class _$SearchAnimeQueryChangedImpl implements SearchAnimeQueryChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function(int? page)? loadMore,
     TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
     TResult Function(double score)? scoreChanged,
     TResult Function(List<int> genre)? genreChanged,
     TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -335,8 +494,8 @@ class _$SearchAnimeQueryChangedImpl implements SearchAnimeQueryChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
     required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
     required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
     required TResult Function(SearchAnimeGenreChanged value) genreChanged,
     required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
@@ -348,8 +507,8 @@ class _$SearchAnimeQueryChangedImpl implements SearchAnimeQueryChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
     TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -361,8 +520,8 @@ class _$SearchAnimeQueryChangedImpl implements SearchAnimeQueryChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
     TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -382,168 +541,6 @@ abstract class SearchAnimeQueryChanged implements SearchAnimeEvent {
   String get query;
   @JsonKey(ignore: true)
   _$$SearchAnimeQueryChangedImplCopyWith<_$SearchAnimeQueryChangedImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SearchAnimeMaximumChangedImplCopyWith<$Res> {
-  factory _$$SearchAnimeMaximumChangedImplCopyWith(
-          _$SearchAnimeMaximumChangedImpl value,
-          $Res Function(_$SearchAnimeMaximumChangedImpl) then) =
-      __$$SearchAnimeMaximumChangedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int maximum});
-}
-
-/// @nodoc
-class __$$SearchAnimeMaximumChangedImplCopyWithImpl<$Res>
-    extends _$SearchAnimeEventCopyWithImpl<$Res,
-        _$SearchAnimeMaximumChangedImpl>
-    implements _$$SearchAnimeMaximumChangedImplCopyWith<$Res> {
-  __$$SearchAnimeMaximumChangedImplCopyWithImpl(
-      _$SearchAnimeMaximumChangedImpl _value,
-      $Res Function(_$SearchAnimeMaximumChangedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? maximum = null,
-  }) {
-    return _then(_$SearchAnimeMaximumChangedImpl(
-      null == maximum
-          ? _value.maximum
-          : maximum // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SearchAnimeMaximumChangedImpl implements SearchAnimeMaximumChanged {
-  const _$SearchAnimeMaximumChangedImpl(this.maximum);
-
-  @override
-  final int maximum;
-
-  @override
-  String toString() {
-    return 'SearchAnimeEvent.maximumChanged(maximum: $maximum)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SearchAnimeMaximumChangedImpl &&
-            (identical(other.maximum, maximum) || other.maximum == maximum));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, maximum);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SearchAnimeMaximumChangedImplCopyWith<_$SearchAnimeMaximumChangedImpl>
-      get copyWith => __$$SearchAnimeMaximumChangedImplCopyWithImpl<
-          _$SearchAnimeMaximumChangedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() search,
-    required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
-    required TResult Function(double score) scoreChanged,
-    required TResult Function(List<int> genre) genreChanged,
-    required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
-  }) {
-    return maximumChanged(maximum);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? search,
-    TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
-    TResult? Function(double score)? scoreChanged,
-    TResult? Function(List<int> genre)? genreChanged,
-    TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
-  }) {
-    return maximumChanged?.call(maximum);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? search,
-    TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
-    TResult Function(double score)? scoreChanged,
-    TResult Function(List<int> genre)? genreChanged,
-    TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
-    required TResult orElse(),
-  }) {
-    if (maximumChanged != null) {
-      return maximumChanged(maximum);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SearchAnimeSearch value) search,
-    required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
-    required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
-    required TResult Function(SearchAnimeGenreChanged value) genreChanged,
-    required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
-  }) {
-    return maximumChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SearchAnimeSearch value)? search,
-    TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
-    TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
-    TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
-    TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
-  }) {
-    return maximumChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SearchAnimeSearch value)? search,
-    TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
-    TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
-    TResult Function(SearchAnimeGenreChanged value)? genreChanged,
-    TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
-    required TResult orElse(),
-  }) {
-    if (maximumChanged != null) {
-      return maximumChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SearchAnimeMaximumChanged implements SearchAnimeEvent {
-  const factory SearchAnimeMaximumChanged(final int maximum) =
-      _$SearchAnimeMaximumChangedImpl;
-
-  int get maximum;
-  @JsonKey(ignore: true)
-  _$$SearchAnimeMaximumChangedImplCopyWith<_$SearchAnimeMaximumChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -615,8 +612,8 @@ class _$SearchAnimeScoreChangedImpl implements SearchAnimeScoreChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function(int? page) loadMore,
     required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
     required TResult Function(double score) scoreChanged,
     required TResult Function(List<int> genre) genreChanged,
     required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
@@ -628,8 +625,8 @@ class _$SearchAnimeScoreChangedImpl implements SearchAnimeScoreChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
     TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
     TResult? Function(double score)? scoreChanged,
     TResult? Function(List<int> genre)? genreChanged,
     TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -641,8 +638,8 @@ class _$SearchAnimeScoreChangedImpl implements SearchAnimeScoreChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function(int? page)? loadMore,
     TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
     TResult Function(double score)? scoreChanged,
     TResult Function(List<int> genre)? genreChanged,
     TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -658,8 +655,8 @@ class _$SearchAnimeScoreChangedImpl implements SearchAnimeScoreChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
     required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
     required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
     required TResult Function(SearchAnimeGenreChanged value) genreChanged,
     required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
@@ -671,8 +668,8 @@ class _$SearchAnimeScoreChangedImpl implements SearchAnimeScoreChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
     TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -684,8 +681,8 @@ class _$SearchAnimeScoreChangedImpl implements SearchAnimeScoreChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
     TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -782,8 +779,8 @@ class _$SearchAnimeGenreChangedImpl implements SearchAnimeGenreChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function(int? page) loadMore,
     required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
     required TResult Function(double score) scoreChanged,
     required TResult Function(List<int> genre) genreChanged,
     required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
@@ -795,8 +792,8 @@ class _$SearchAnimeGenreChangedImpl implements SearchAnimeGenreChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
     TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
     TResult? Function(double score)? scoreChanged,
     TResult? Function(List<int> genre)? genreChanged,
     TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -808,8 +805,8 @@ class _$SearchAnimeGenreChangedImpl implements SearchAnimeGenreChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function(int? page)? loadMore,
     TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
     TResult Function(double score)? scoreChanged,
     TResult Function(List<int> genre)? genreChanged,
     TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -825,8 +822,8 @@ class _$SearchAnimeGenreChangedImpl implements SearchAnimeGenreChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
     required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
     required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
     required TResult Function(SearchAnimeGenreChanged value) genreChanged,
     required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
@@ -838,8 +835,8 @@ class _$SearchAnimeGenreChangedImpl implements SearchAnimeGenreChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
     TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -851,8 +848,8 @@ class _$SearchAnimeGenreChangedImpl implements SearchAnimeGenreChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
     TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -945,8 +942,8 @@ class _$SearchAnimeViewTypeChangedImpl implements SearchAnimeViewTypeChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() search,
+    required TResult Function(int? page) loadMore,
     required TResult Function(String query) queryChanged,
-    required TResult Function(int maximum) maximumChanged,
     required TResult Function(double score) scoreChanged,
     required TResult Function(List<int> genre) genreChanged,
     required TResult Function(SearchAnimeViewType viewType) viewTypeChanged,
@@ -958,8 +955,8 @@ class _$SearchAnimeViewTypeChangedImpl implements SearchAnimeViewTypeChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? search,
+    TResult? Function(int? page)? loadMore,
     TResult? Function(String query)? queryChanged,
-    TResult? Function(int maximum)? maximumChanged,
     TResult? Function(double score)? scoreChanged,
     TResult? Function(List<int> genre)? genreChanged,
     TResult? Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -971,8 +968,8 @@ class _$SearchAnimeViewTypeChangedImpl implements SearchAnimeViewTypeChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? search,
+    TResult Function(int? page)? loadMore,
     TResult Function(String query)? queryChanged,
-    TResult Function(int maximum)? maximumChanged,
     TResult Function(double score)? scoreChanged,
     TResult Function(List<int> genre)? genreChanged,
     TResult Function(SearchAnimeViewType viewType)? viewTypeChanged,
@@ -988,8 +985,8 @@ class _$SearchAnimeViewTypeChangedImpl implements SearchAnimeViewTypeChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchAnimeSearch value) search,
+    required TResult Function(SearchAnimeLoadMore value) loadMore,
     required TResult Function(SearchAnimeQueryChanged value) queryChanged,
-    required TResult Function(SearchAnimeMaximumChanged value) maximumChanged,
     required TResult Function(SearchAnimeScoreChanged value) scoreChanged,
     required TResult Function(SearchAnimeGenreChanged value) genreChanged,
     required TResult Function(SearchAnimeViewTypeChanged value) viewTypeChanged,
@@ -1001,8 +998,8 @@ class _$SearchAnimeViewTypeChangedImpl implements SearchAnimeViewTypeChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchAnimeSearch value)? search,
+    TResult? Function(SearchAnimeLoadMore value)? loadMore,
     TResult? Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult? Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult? Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult? Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult? Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,
@@ -1014,8 +1011,8 @@ class _$SearchAnimeViewTypeChangedImpl implements SearchAnimeViewTypeChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchAnimeSearch value)? search,
+    TResult Function(SearchAnimeLoadMore value)? loadMore,
     TResult Function(SearchAnimeQueryChanged value)? queryChanged,
-    TResult Function(SearchAnimeMaximumChanged value)? maximumChanged,
     TResult Function(SearchAnimeScoreChanged value)? scoreChanged,
     TResult Function(SearchAnimeGenreChanged value)? genreChanged,
     TResult Function(SearchAnimeViewTypeChanged value)? viewTypeChanged,

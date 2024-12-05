@@ -7,14 +7,23 @@ import 'package:flutter_my_anime_list/shared/utils/enums/search_anime_view_type.
 import 'package:flutter_my_anime_list/shared/widgets/app_text.dart';
 import 'package:flutter_my_anime_list/shared/widgets/text_field/app_text_field.dart';
 
-class SearchTextField extends StatefulWidget {
-  const SearchTextField({super.key});
+class SearchHeader extends StatefulWidget {
+  const SearchHeader({
+    super.key,
+    this.onChanged,
+    this.onSearch,
+    this.onViewTypeChanged,
+  });
+
+  final void Function(String)? onChanged;
+  final void Function()? onSearch;
+  final void Function(Set<SearchAnimeViewType>)? onViewTypeChanged;
 
   @override
-  State<SearchTextField> createState() => _SearchTextFieldState();
+  State<SearchHeader> createState() => _SearchHeaderState();
 }
 
-class _SearchTextFieldState extends State<SearchTextField> {
+class _SearchHeaderState extends State<SearchHeader> {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   bool _isFocused = false;
@@ -59,16 +68,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
                       right: 80,
                     ),
                   ),
-                  onChanged: (value) {
-                    context.read<SearchAnimeBloc>().add(
-                          SearchAnimeEvent.queryChanged(value),
-                        );
-                  },
-                  onEditingComplete: () {
-                    context.read<SearchAnimeBloc>().add(
-                          const SearchAnimeEvent.search(),
-                        );
-                  },
+                  onChanged: widget.onChanged,
+                  onEditingComplete: widget.onSearch,
                 ),
                 Positioned(
                   right: 0,
@@ -92,11 +93,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
                       child: _isFocused
                           ? GestureDetector(
                               key: const ValueKey('search_button'),
-                              onTap: () {
-                                context.read<SearchAnimeBloc>().add(
-                                      const SearchAnimeEvent.search(),
-                                    );
-                              },
+                              onTap: widget.onSearch,
                               child: Container(
                                 width: 80,
                                 height: double.maxFinite,
@@ -165,11 +162,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
                       orElse: () => SearchAnimeViewType.list,
                     ),
                   },
-                  onSelectionChanged: (p0) {
-                    context.read<SearchAnimeBloc>().add(
-                          SearchAnimeEvent.viewTypeChanged(p0.first),
-                        );
-                  },
+                  onSelectionChanged: widget.onViewTypeChanged,
                 );
               },
             ),

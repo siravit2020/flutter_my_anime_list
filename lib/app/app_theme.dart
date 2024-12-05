@@ -55,7 +55,7 @@ class AppTheme {
             if (states.contains(WidgetState.selected)) {
               return colors.primary;
             }
-            return colors.textPrimary;
+            return colors.primary;
           },
         ),
         trackColor: WidgetStateProperty.resolveWith(
@@ -63,6 +63,11 @@ class AppTheme {
             if (states.contains(WidgetState.selected)) {
               return colors.primary.withOpacity(0.5);
             }
+            return Colors.grey.withOpacity(0.1);
+          },
+        ),
+        trackOutlineColor: WidgetStateProperty.resolveWith(
+          (states) {
             return Colors.transparent;
           },
         ),
